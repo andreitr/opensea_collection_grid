@@ -3,7 +3,7 @@ import urllib.request, json
 import random
 
 # OpenSea collection slug
-os_slug = "mistletoadz"
+os_slug = "noadz"
 
 # Number of pages to sample. Default is 2 which is about 100 images.
 # You can increase this number for more variability
@@ -14,7 +14,7 @@ images = []
 img_idx = 0
 for i in range(os_sample):
   # Pagination offset
-  offset = 500 + (i*50)
+  offset = (i*50)
 
   # Load collection data
   with urllib.request.urlopen("https://api.opensea.io/api/v1/assets?order_direction=desc&offset=%s&limit=50&collection=%s" % (offset,os_slug)) as url:

@@ -1,7 +1,14 @@
 # OpenSea Collection Image Grid
-Generates 1500x500 image grid from an OpenSea collection. Works with GIFs, PNGs, JPGs.
+Generates four 1500x500 image grids from an OpenSea collection. Works with GIFs, PNGs, JPGs.
 
-![alt text](https://github.com/andreitr/opensea_collection_grid/blob/main/images/sample_cover.png?raw=true)
+####3x1 
+![alt text](https://github.com/andreitr/opensea_collection_grid/blob/main/images/sample_cover_lg.png?raw=true)
+####6x2 
+![alt text](https://github.com/andreitr/opensea_collection_grid/blob/main/images/sample_cover_md.png?raw=true)
+####12x4 
+![alt text](https://github.com/andreitr/opensea_collection_grid/blob/main/images/sample_cover_sm.png?raw=true)
+####15x5 
+![alt text](https://github.com/andreitr/opensea_collection_grid/blob/main/images/sample_cover_xs.png?raw=true)
 
 
 ##### Requirements
