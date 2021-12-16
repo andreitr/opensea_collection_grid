@@ -21,7 +21,7 @@ python3 -m pip install --upgrade Pillow
 ##### Run
 ```
 # From inside the project directory run
-python3 collage.py
+python3 collage.py noadz
 ```
 
 #### Questions? 
