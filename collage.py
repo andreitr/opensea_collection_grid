@@ -8,7 +8,7 @@ os_slug = sys.argv[1]
 
 # Number of pages to sample. Default is 2 which is about 100 images.
 # You can increase this number for more variability
-os_sample = 5
+os_sample = 3
 
 images = []
 
@@ -24,10 +24,12 @@ for i in range(os_sample):
 
     # Loop through collection's assets and save images in the images folder
     for item in data['assets']:
-      img_name =  "images/%s.png" % (img_idx) 
-      urllib.request.urlretrieve(item['image_url'], img_name)
-      images.append(img_name)
-      img_idx += 1
+      img_name =  "images/%s.png" % (img_idx)
+ 
+      if item['image_url']:
+        urllib.request.urlretrieve(item['image_url'], img_name)
+        images.append(img_name)
+        img_idx += 1
 
 # Randomize saved images
 random.shuffle(images)
