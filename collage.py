@@ -20,7 +20,6 @@ headers = {
 os_sample = 3
 
 images = []
-offset = 0
 img_idx = 0
 
 for i in range(os_sample):
