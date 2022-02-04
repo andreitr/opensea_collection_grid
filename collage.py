@@ -2,34 +2,46 @@ from PIL import Image, ImageDraw
 import urllib.request, json
 import random
 import sys
+import requests
+
 
 # OpenSea collection slug
 os_slug = sys.argv[1]
+
+# OpenSea api key
+headers = {
+ "Accept": "application/json",
+ "X-API-KEY": sys.argv[2]
+}
+
 
 # Number of pages to sample. Default is 2 which is about 100 images.
 # You can increase this number for more variability
 os_sample = 3
 
 images = []
-
+offset = 0
 img_idx = 0
+
 for i in range(os_sample):
   # Pagination offset
   offset = (i*50)
 
   # Load collection data
-  with urllib.request.urlopen("https://api.opensea.io/api/v1/assets?order_direction=desc&offset=%s&limit=50&collection=%s" % (offset,os_slug)) as url:
+  url = "https://api.opensea.io/api/v1/assets?order_direction=desc&offset=%s&limit=50&collection=%s" % (offset,os_slug)
 
-    data = json.loads(url.read().decode())
+  response = requests.request("GET", url, headers=headers)
+  data = json.loads(response.text)
 
-    # Loop through collection's assets and save images in the images folder
-    for item in data['assets']:
-      img_name =  "images/%s.png" % (img_idx)
+  # Loop through collection's assets and save images in the images folder
+  for item in data['assets']:
+    img_name =  "images/%s.png" % (img_idx)
+    print(img_name)
  
-      if item['image_url']:
-        urllib.request.urlretrieve(item['image_url'], img_name)
-        images.append(img_name)
-        img_idx += 1
+    if item['image_url']:
+      urllib.request.urlretrieve(item['image_url'], img_name)
+      images.append(img_name)
+      img_idx += 1
 
 # Randomize saved images
 random.shuffle(images)
