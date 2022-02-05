@@ -16,6 +16,7 @@ Generates four 1500x500 image grids from an OpenSea collection. Works with GIFs,
 # Install Pillow via pip
 python3 -m pip install --upgrade pip 
 python3 -m pip install --upgrade Pillow
+python3 -m pip install requests
 ```
 
 ##### Run

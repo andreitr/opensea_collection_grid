@@ -4,7 +4,6 @@ import random
 import sys
 import requests
 
-
 # OpenSea collection slug
 os_slug = sys.argv[1]
 
@@ -38,9 +37,12 @@ for i in range(os_sample):
     print(img_name)
  
     if item['image_url']:
-      urllib.request.urlretrieve(item['image_url'], img_name)
-      images.append(img_name)
-      img_idx += 1
+      try:
+        urllib.request.urlretrieve(item['image_url'], img_name)
+        images.append(img_name)
+        img_idx += 1
+      except:
+        print("Error opening %s" % item['image_url'])
 
 # Randomize saved images
 random.shuffle(images)
